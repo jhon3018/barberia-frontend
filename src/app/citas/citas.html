@@ -1,0 +1,75 @@
+<div class="contenedor">
+  <h2>Agenda de citas - Barbería</h2>
+
+  <h3>Registrar nueva cita</h3>
+  <form (ngSubmit)="registrar()" class="formulario">
+    <input [(ngModel)]="nuevaCita.cliente" name="cliente" placeholder="Cliente" required>
+    <input [(ngModel)]="nuevaCita.fecha" name="fecha" type="date" required>
+    <input [(ngModel)]="nuevaCita.hora" name="hora" type="time" required>
+    <input [(ngModel)]="nuevaCita.barbero" name="barbero" placeholder="Barbero" required>
+    <button type="submit">Registrar</button>
+  </form>
+  <p *ngIf="mensajeError" class="error">{{ mensajeError }}</p>
+
+  <div class="filtros">
+    <label>
+      Estado:
+      <select [(ngModel)]="filtroEstado" name="filtroEstado">
+        <option value="todos">Todos</option>
+        <option value="pendiente">Pendiente</option>
+        <option value="atendida">Atendida</option>
+        <option value="cancelada">Cancelada</option>
+      </select>
+    </label>
+
+    <label>
+      Barbero:
+      <select [(ngModel)]="filtroBarbero" name="filtroBarbero">
+        <option value="todos">Todos</option>
+        <option *ngFor="let barbero of barberosUnicos" [value]="barbero">{{ barbero }}</option>
+      </select>
+    </label>
+  </div>
+
+  <table class="tabla-citas">
+    <thead>
+      <tr>
+        <th>Cliente</th>
+        <th>Fecha</th>
+        <th>Hora</th>
+        <th>Barbero</th>
+        <th>Estado</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let cita of citasFiltradas">
+        <ng-container *ngIf="citaEnEdicion?.id !== cita.id">
+          <td>{{ cita.cliente }}</td>
+          <td>{{ cita.fecha }}</td>
+          <td>{{ cita.hora }}</td>
+          <td>{{ cita.barbero }}</td>
+          <td><span class="estado" [class]="cita.estado">{{ cita.estado }}</span></td>
+          <td class="acciones">
+            <button (click)="empezarEdicion(cita)">Editar</button>
+            <button (click)="atender(cita.id!)">Atender</button>
+            <button (click)="cancelar(cita.id!)">Cancelar</button>
+            <button class="btn-eliminar" (click)="eliminar(cita.id!)">Eliminar</button>
+          </td>
+        </ng-container>
+
+        <ng-container *ngIf="citaEnEdicion?.id === cita.id">
+          <td>{{ cita.cliente }}</td>
+          <td><input [(ngModel)]="citaEnEdicion!.fecha" type="date" name="editFecha{{cita.id}}"></td>
+          <td><input [(ngModel)]="citaEnEdicion!.hora" type="time" name="editHora{{cita.id}}"></td>
+          <td><input [(ngModel)]="citaEnEdicion!.barbero" name="editBarbero{{cita.id}}"></td>
+          <td>{{ cita.estado }}</td>
+          <td class="acciones">
+            <button (click)="guardarEdicion()">Guardar</button>
+            <button (click)="cancelarEdicion()">Cancelar</button>
+          </td>
+        </ng-container>
+      </tr>
+    </tbody>
+  </table>
+</div>

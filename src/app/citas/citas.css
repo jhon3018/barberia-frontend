@@ -1,0 +1,194 @@
+:host {
+  --color-primario: #6366f1;
+  --color-primario-oscuro: #4f46e5;
+  --color-fondo: #f8fafc;
+  --color-tarjeta: #ffffff;
+  --color-texto: #1e293b;
+  --color-texto-suave: #64748b;
+  --color-borde: #e2e8f0;
+  --sombra: 0 4px 12px rgba(0, 0, 0, 0.06);
+  --sombra-hover: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.contenedor {
+  max-width: 1000px;
+  margin: 2rem auto;
+  padding: 0 1.5rem;
+  font-family: 'Poppins', sans-serif;
+  color: var(--color-texto);
+}
+
+h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  background: linear-gradient(90deg, var(--color-primario), #ec4899);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  margin-bottom: 0.25rem;
+}
+
+h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #cbd5e1;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+.formulario {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  background: var(--color-tarjeta);
+  padding: 1.5rem;
+  border-radius: 16px;
+  box-shadow: var(--sombra);
+  margin-bottom: 1.5rem;
+}
+
+.formulario input,
+.filtros select {
+  padding: 0.65rem 0.9rem;
+  border: 1.5px solid var(--color-borde);
+  border-radius: 10px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.95rem;
+  transition: border-color 0.2s ease;
+}
+
+.formulario input:focus,
+.filtros select:focus {
+  outline: none;
+  border-color: var(--color-primario);
+}
+
+.formulario button {
+  background: linear-gradient(90deg, var(--color-primario), var(--color-primario-oscuro));
+  color: white;
+  border: none;
+  padding: 0.65rem 1.4rem;
+  border-radius: 10px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.formulario button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(99, 102, 241, 0.35);
+}
+
+.error {
+  background: #fef2f2;
+  color: #dc2626;
+  padding: 0.75rem 1.1rem;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+  border-left: 4px solid #dc2626;
+  font-size: 0.9rem;
+}
+
+.filtros {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.filtros label {
+  font-size: 0.85rem;
+  color: #cbd5e1;
+  font-weight: 500;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.tabla-citas {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  background: var(--color-tarjeta);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: var(--sombra);
+}
+
+.tabla-citas th {
+  background: var(--color-texto);
+  color: white;
+  padding: 1rem;
+  text-align: left;
+  font-weight: 600;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.tabla-citas td {
+  padding: 1rem;
+  border-bottom: 1px solid var(--color-borde);
+  font-size: 0.95rem;
+}
+
+.tabla-citas tr:last-child td {
+  border-bottom: none;
+}
+
+.tabla-citas tbody tr {
+  transition: background 0.15s ease;
+}
+
+.tabla-citas tbody tr:hover {
+  background: #f8fafc;
+}
+
+.estado {
+  padding: 0.3rem 0.8rem;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: white;
+  display: inline-block;
+}
+
+.estado.pendiente {
+  background: #f59e0b;
+}
+
+.estado.atendida {
+  background: #10b981;
+}
+
+.estado.cancelada {
+  background: #94a3b8;
+}
+
+.acciones button {
+  margin-right: 0.4rem;
+  padding: 0.45rem 0.8rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  background: #f1f5f9;
+  color: var(--color-texto);
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 500;
+  transition: background 0.15s ease;
+}
+
+.acciones button:hover {
+  background: #e2e8f0;
+}
+
+.btn-eliminar {
+  background: #fef2f2 !important;
+  color: #dc2626 !important;
+}
+
+.btn-eliminar:hover {
+  background: #fee2e2 !important;
+}
