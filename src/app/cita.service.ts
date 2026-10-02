@@ -7,7 +7,7 @@ import { Cita } from './cita.model';
   providedIn: 'root'
 })
 export class CitaService {
-  private apiUrl = 'https://barberia-backend-glt2.onrender.com/api/citas';
+  private apiUrl = 'https://barberia-backend-glt2.onrender.com/citas';
 
   constructor(private http: HttpClient) {}
 
